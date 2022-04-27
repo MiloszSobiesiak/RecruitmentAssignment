@@ -1,0 +1,34 @@
+.main{
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+}
+.person{
+    text-align: center;
+}
+img{
+    margin-top: 80px;
+    border-radius: 10%;
+    width: 200px;
+}
+#name{
+    margin: 0;
+    font-size: 1.8rem;
+    display: inline-block;
+}
+#text{
+    margin: 10px 0;
+    font-size: 1rem;
+    color:	#909090;
+}
+button{
+    margin-top: 20px;
+    border: none;
+    border-radius: 10%;
+    width: 80px;
+    height: 30px;
+    background-color:#0099ff; 
+    color: white;
+    cursor: pointer;
+}

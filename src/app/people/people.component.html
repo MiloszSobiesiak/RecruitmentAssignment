@@ -1,0 +1,8 @@
+<div class="main">
+    <div class="person">
+        <img [src]="user?.picture.large" (mouseenter) ="mouseEnter('div a') " (mouseleave) ="mouseLeave()"/><br>
+        <p id="text">Hi, My name is</p><br>
+        <p id="name" (mouseenter) ="mouseEnter('div a') " (mouseleave) ="mouseLeave()">{{user?.name.first}} {{user?.name.last}}</p><br>
+        <button (click)="buttonclick()" (mouseenter) ="mouseEnter('div a') " (mouseleave) ="mouseLeave()">New</button>
+    </div>
+</div>
