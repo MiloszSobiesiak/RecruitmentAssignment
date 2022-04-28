@@ -17,11 +17,13 @@ img{
     font-size: 1.8rem;
     display: inline-block;
 }
+
 #text{
     margin: 10px 0;
     font-size: 1rem;
     color:	#909090;
 }
+
 button{
     margin-top: 20px;
     border: none;
@@ -32,3 +34,4 @@ button{
     color: white;
     cursor: pointer;
 }
+

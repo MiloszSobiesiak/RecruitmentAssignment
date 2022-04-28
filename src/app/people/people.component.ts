@@ -7,56 +7,52 @@ import { interval, Subscription } from 'rxjs';
   styleUrls: ['./people.component.css']
 })
 export class PeopleComponent implements OnInit, OnDestroy {
-  user: any;
-  number: number = 2000;
-  obs = interval(this.number)
-  sub: any;
+  userdata: any;
+  currentsec: number = 0;
+  timer = interval(1000)
+  settimer: any;
   constructor(private http: HttpService) { }
 
   ngOnInit(): void {
       this.newPerson()
-      this.intervalfunction()
-      
+      this.intervalfunction()   
+  }
+
+  buttonclick(){
+    this.newPerson()
+    this.currentsec = 0;
+  }
+
+  intervalfunction(){
+    this.settimer =  this.timer.subscribe( (d) =>{
+      console.log(this.currentsec)
+      this.currentsec = this.currentsec + 1;
+      if(this.currentsec===5){
+        this.currentsec = 0;
+        this.newPerson();
+      }
+    })  
+  } 
+
+  mouseEnter(){
+    this.settimer.unsubscribe()
+  }
+
+  mouseLeave(){
+    this.intervalfunction()
   }
 
   newPerson(){
     this.http.getPerson().subscribe(
       (data: any) => {
-        this.user = data.results[0];
+        this.userdata = data.results[0];
       },
-      (err: any) => {
+      () => {
         alert('Something went wrong!')
-      }
-    );
+      });
   }
 
-  buttonclick(){
-    this.newPerson()
-    this.sub.unsubscribe()
-    this.obs = interval(this.number)
-    this.intervalfunction()
+  ngOnDestroy(): void {
+  this.settimer.unsubscribe()
   }
-
-  intervalfunction(){
-    this.sub =  this.obs.subscribe( d =>{
-      this.newPerson()
-      console.log(d)
-    }
-    )
-  } 
-  mouseEnter(zmienna:string){
-    console.log(zmienna)
-    this.sub.unsubscribe()
-
-  }
-
-  mouseLeave(){
-    console.log('Naura')
-    this.intervalfunction()
-  }
-
-
-ngOnDestroy(): void {
-  this.sub.unsubscribe()
-}
 }
